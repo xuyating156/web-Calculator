@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器BUG02</title>
+    <style type="text/css">
+        /*使用class选择器 前面加 .    ，使用id选择器前面加#*/
+        #menu{
+            width:212px;
+            height:28px;
+            /*border: solid 2px red;*/
+            margin: auto; /*水平居中，相对于父容器*/
+            background-color: dimgray;
+            /*border-radius: 10px; 四个角都变圆角*/
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        #result-box{
+            width:208px;
+            height:28px;
+            border: solid 2px dimgray;
+            margin: auto; /*水平居中，相对于父容器*/
+            background-color:dimgray;
+
+        }
+        #result {
+            width:200px;
+            height:24px;
+            border: solid 2px red;
+            margin: auto; /*水平居中，相对于父容器*/
+            background-color:white;
+            text-align: right; /*文字靠右*/
+
+        }
+        #bottom{
+            width:208px;
+            height:209px;
+            border: solid 2px dimgray;
+            /*float: left;*/
+            margin: auto; /*水平居中，相对于父容器*/
+            background-color: #0ae291;
+
+        }
+        #inner{
+            width: 50px;
+            height:40px;
+            border: solid 1px dimgray;
+            float: left;
+            text-align: center;/*文字水平居中*/
+            line-height: 40px;/*设置文字行高*/
+            font-size: 10px;/*文本大小*/
+
+        }
+        #inner:hover{
+            background-color: orangered; /*鼠标滑动显示特效*/
+            font-size: 20px;/*字体变大*/
+
+        }
+
+
+
+    </style>
+
+    <script>
+        /**
+         * BUG梳理
+         * 1、输入框数字能跑到外面
+         * 2、等于之后，点击数字重新开始
+         * 3、运算符不能重新输入
+         * 4、数字前面加0，运算结果错误（以0开头是八进制）
+         * 5、不输入任何表达式等号出错
+         * 6、0可以作为被除数
+         * 7、数字后面加运算符没反应
+         * 8、
+         */
+
+
+     //定义一个标志，来保存是否点击等号
+        var isEqucCliked = false;
+    //定义一个标志，来保存是否点击小数点
+        var isPortClicked = false;
+    //定义一个标志，来保存是否点击运算符
+        var iOperaterClicked = false;
+
+
+        //如何与界面产生关系
+        //如何反馈到界面上
+        //    不同按钮，不同功能
+        //    如何计算结果
+        function  input(number) {
+            // 利用JS实现对result的div元素的操作，得到某个数字
+            // document.getElementById("result").innerHTML+=number;
+            //通过ID的这个innerHTML属性获得一个元素，号连接起来
+            var inputExpress = document.getElementById("result").innerHTML;
+            if(isEqucCliked ==true){
+                Ac();
+            }
+            if(inputExpress.length<=20 ){//数字个数小于20才可以输入界面
+                document.getElementById("result").innerHTML+=number;
+                isEqucCliked=false;//只要输入数字就关闭
+                isPortClicked = false;//输入数字就可以关闭小数点
+                iOperaterClicked =false;
+            }
+
+        }
+//输入运算符到界面上
+        function operater(symbol) {
+            //方案一：使用开关进行控制不能啥输入两位运算符
+           var espressOperater =  document.getElementById("result").innerHTML;
+           // if(espressOperater.length<=20 && iOperaterClicked == false){
+           //         document.getElementById("result").innerHTML += symbol;
+           //         isPortClicked = false;//输入运算符就可以关闭小数点
+           //         iOperaterClicked =true;
+           //     }
+
+            //方案2：用户输入第二位运算符的时候进行替换，将第一位替换为第二位
+            var lassCode = espressOperater.charCodeAt(espressOperater.length-1);//ASCII吗
+            var latchar = espressOperater.charAt(espressOperater.length-1);//最后一位字符
+
+            if(lassCode ==37 ||lassCode==42 ||lassCode==43 ||lassCode==45||lassCode==47){
+                var temp = espressOperater.substring(0,espressOperater.length-1);//0位到最后一位运算符
+                document.getElementById("result").innerHTML = temp+symbol;//显示被替换之后的内容
+            }
+            else{
+                document.getElementById("result").innerHTML+= symbol;
+            }
+            isPortClicked = false;
+        }
+ //点击等号计算结果并且显示
+        function cacl() {
+            var express = document.getElementById("result").innerHTML;
+            //正确表达式
+            //必须数字，运算符开头，数字结尾
+            //至少3位长度
+            // if(express.length<3){
+            // }
+            // else {//必须以数字开头
+            //     var firstCode =express.charAt(0);
+            //     if(firstCode < 48||firstCode >57){
+            //         //错的
+            //     }
+            //     //若没包含任意运算符，错误
+            //     var include = express.indexOf("+")>=0|| express.indexOf("-")>=0||
+            //         express.indexOf("*")>=0|| express.indexOf("/")>=0|| express.indexOf("%")>=0 ;
+            //     if(include ==false){
+            //
+            //     }
+            // }
+
+
+            var IsLengthOk =express.length >=3;//至少包含3位数
+            var firstCode =express.charAt(0);
+            var ISFirstCodeOk = firstCode >= 48&&firstCode <=57;//必须以数字开头
+            var LAstCode =  express.charCodeAt(express.length-1);
+            var  IsLastCodeOk =LAstCode >= 48&& LAstCode <=57;//必须以数字结结尾
+            var include = express.indexOf("+")>=0|| express.indexOf("-")>=0||
+                express.indexOf("*")>=0|| express.indexOf("/")>=0|| express.indexOf("%")>=0 ;
+
+            if(IsLengthOk ==true && ISFirstCodeOk==true && IsLastCodeOk==true && include==true){
+                // document.writeln(express);//展示新的啊网页，之前的网页消失
+                // window.alert(express);//展示弹窗，不消失页面
+                var r = eval(express);//内置函数，实现计算
+                document.getElementById("result").innerHTML=r;//计算器显示框里面的数值被重新定义
+                isEqucCliked = true;//等号被点击
+
+            }
+            else {
+                window.alert("表达式不正确");
+                // document.getElementById("result").innerHTML = "表达式不正确";
+            }
+
+        }
+
+//小数点不能输入两次
+        function point() {
+            if (isPortClicked == false) {
+                document.getElementById("result").innerHTML += ".";
+                isPortClicked = true;
+            }
+        }
+
+//回退.循环取字符串，不取最后一位
+        function del() {
+            var dell = document.getElementById("result").innerHTML;
+            var newstr = "";
+            for(var i=0;i<dell.length-1;i++){
+                newstr+=dell.charAt(i);
+                // window.alert(dell.charAt(i));
+                iOperaterClicked = false;//重置开关状态
+                isPortClicked = false;
+            }
+            document.getElementById("result").innerHTML=newstr;
+            //将结果展示到界面上
+        }
+//实现AC
+        function Ac() {
+           document.getElementById("result").innerHTML="";
+            iOperaterClicked = false;
+            isEqucCliked = false;
+            isPortClicked = false;
+
+
+        }
+
+//其他验证
+        function other() {
+            ////用js修改result元素大小,双击这个层，就可以看到被修改的样式
+            // document.getElementById("result").style.fontSize ="40px";
+            // document.getElementById("result").style.backgroundColor ="red";
+            // window.alert(isEqucCliked);
+
+
+        }
+    </script>
+</head>
+<body>
+<div id="menu" ondblclick="other()">&nbsp;
+    <font size="6" color="red">*</font>
+    <font size="6" color="blue">*</font>
+    <font size="6" color="#6b8e23">*</font>
+
+</div>
+<div id="result-box">
+    <div id="result" ondblclick="other()">
+
+    </div>
+</div>
+
+<div id="bottom">
+    <div id="inner" onclick="Ac()">AC</div>
+    <div id="inner">+/-</div>
+    <div id="inner" onclick="operater('%')">>%</div>
+    <div id="inner" onclick="operater('/')">/</div>
+    <div id="inner" onclick="input(7)">7</div>
+    <div id="inner" onclick="input(8)">8</div>
+    <!--//鼠标单击事件-->
+    <div id="inner" onclick="input(9)">9</div>
+    <div id="inner" onclick="operater('*')">*</div>
+    <div id="inner" onclick="input(4)">4</div>
+    <div id="inner" onclick="input(5)">5</div>
+    <div id="inner" onclick="input(6)">6</div>
+    <div id="inner" onclick="operater('-')">-</div>
+    <div id="inner" onclick="input(1)">1</div>
+    <div id="inner" onclick="input(2)">2</div>
+    <div id="inner" onclick="input(3)">3</div>
+    <div id="inner" onclick="operater('+')">+</div>
+    <div id="inner" onclick="input(0)">0</div>
+    <div id="inner" onclick="del()">回退</div>
+    <div id="inner"onclick="point('.')">.</div>
+    <div id="inner" onclick="cacl()">=</div>
+
+</div>
+
+</body>
+</html>

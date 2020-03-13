@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数字处理</title>
+    <script>
+        /**
+         * 数字处理，用户输入正整数，讲正整数倒序输出，并求个位数相加之和
+         * 不允许把用户输入的正整数作为字符串处理，
+         */
+//整数
+//         var number =225566;
+//         while(number >0){
+//             var dight = number%10;
+//             document.writeln(dight);
+//             number = parseInt(number/10);
+//         }
+
+//负数
+//         var number = -225566;
+//         // number=number*-1;
+//         number = math.abs(number);
+//         while(number >0){
+//             var dight = number%10;
+//             document.writeln(dight);
+//             number = parseInt(number/10);
+//
+//         }
+
+//小数:小数变整数，个位数相加
+
+        var number = 123.456;
+        var int = math.floor(number);//取小数部分
+        document.writeln(int ==number)
+        while(int !=number){
+            number=number*10
+            int = math.floor(number);
+        }
+        document.writeln(number)
+    </script>
+</head>
+<body>
+
+</body>
+</html>

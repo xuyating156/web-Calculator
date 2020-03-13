@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>js入门</title>
+    <script>/*脚本 */
+    // 这是单行注释
+        /**
+         *这是多行注释
+         * 多行注释
+         */
+            //输入  variable:变量
+        var name = window.prompt("请输入姓名：");
+        //处理，+   表 示连接字符串
+       var welcome= "欢迎观看"+ name;
+    //输出
+    document.write(welcome);
+
+        var num1 = 100;
+        var mum2 = 200;
+        var str1 = "A12B";
+        var str2 = "300";
+        document.write(num1  + mum2);
+        document.write("<br/>");
+        document.write(num1  + str1);//讲数字转换成字符串进行运算连接起来，优先处理字符串
+        document.write("<br/>");
+        document.write(num1  + mum2 + str1);//
+        document.write("<br/>");
+        document.write(str1 + num1  + mum2 );//
+        document.write("<br/>");
+        document.write(str1 +( num1  + mum2 ));//
+        //如果是减号，字符串如果能转换成数字则正常运算，否则报错
+        document.write("<br/>");
+        document.write(str1 -( num1  + mum2 ));//
+        document.write("<br/>");
+        document.write(str2 - num1 );//
+        document.write("<br/>");
+        document.write(num1  - mum2);
+        document.write("<br/>");
+        document.write(num1  * mum2);
+        document.write("<br/>");
+        document.write(num1  / mum2);
+        document.write("<br/>");
+        document.write(num1  % mum2);
+        document.write("<br/>");
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

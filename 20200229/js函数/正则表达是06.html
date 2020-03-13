@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式06</title>
+</head>
+<script>
+//判断手机号是否正确
+//     var string ="15620001234";
+//     // var re  = new RegExp("1[3-9][0-9]{9}$");
+//     var re  = new RegExp("1[3-9]\\d{9}$");
+//     //    \  在编程中是转义字符  使用 \\b 才可以
+//     /*  [0-9]{9}$    必须以9个数字结尾，不能有其他的*/
+//     // window.alert(string.match(re));
+//     window.alert((re.test(string)));
+//
+
+//判断年月是都有效
+
+    var yelsCode = "2020-02-13";
+    // var yels = new RegExp("\\d{4}$[\\-](([0][1-9])|([1][0-2]))[\\-]([0-2][0-9])");
+    var yels = new RegExp("/\\d{4}-(((0[1-9])|(1[0-2])))(-((0[1-9])|([1-2][0-9])|(3[0-1])))? /");
+
+    window.alert(yels.test(yelsCode));
+
+
+
+
+//判断座机号是否正确
+
+
+
+
+</script>
+
+<body>
+
+</body>
+</html>

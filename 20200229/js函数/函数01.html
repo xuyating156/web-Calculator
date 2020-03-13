@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+    <script>
+        /**
+         *  function  函数名（）{
+         *      函数体
+         *  }
+         *  调用
+         */
+
+//求和
+    function summary(min,max){//形参
+            var sum=0;
+            for(var i=min;i<=max;i++){
+                sum+=i;
+            }
+            document.writeln(sum);
+        }
+        var x =parseInt(window.prompt("请输入最小值："));
+        var y =parseInt(window.prompt("请输入最da值："));
+        summary(x,y);//实参
+
+
+
+//质数
+        function prime(num3) {
+            var count3 = 0;
+                for(var i=1;i<=num3;i++){
+                    if(num3%i==0){
+                        count3++;
+                    }
+                }
+                if(count3==2){
+                    document.writeln("这是质数"+num3+"<br/>");
+                }
+        }
+        var t =parseInt(window.prompt("请输入一个值判断是否质数："));
+        prime(t);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

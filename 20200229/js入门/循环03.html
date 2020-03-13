@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环</title>
+    <script>
+        /**
+         * 循环结构
+         */
+        // for(var i=0;i<=10;i++){
+        //     document.write("hello" + i  + "<br/>");
+        // }
+
+//循环求和
+
+// 判断字符
+//         var str="HeLloAAbb"
+//         var code0 = str.charAt(0);//取这个字符串的第0个字符
+//         var code1 = str.charCodeAt(0);//取这个字符串的第0个字符的ASCII码
+//         document.writeln(  code0 + "<br/>");
+//         document.writeln(  code1 + "<br/>");
+
+//从键盘输入，判断是大写还是小写还是符号
+//         var code_test = window.prompt("大写/小写/符号")
+//         var code = code_test.charCodeAt(0);//取这个字符串的第0个字符的ASCII码
+//
+//         if (code >=65 && code<=90){
+//             document.write("大写")
+//         }
+//         else if( code >=97 && code<=122 ){
+//             document.write("小写")
+//         }
+//         else {
+//             document.write("符号")
+//         }
+
+
+//判断输入的有多少个大写，小写，符号，数字
+
+        // var string1 = "HelloAy123,=-";
+        var string = window.prompt("请输入字符串：");
+        var upper = 0;
+        var lower = 0;
+        var number = 0;
+        var other = 0;
+        for(var i=0 ; i < string.length; i++ ){
+            var code = string.charCodeAt(i);//取这个字符串的第i个字符的ASCII码
+            if (code >=65 && code<=90){
+                upper++;
+             }
+            else if( code >=97 && code<=122 ){
+                lower++;
+            }
+            else if( code >=48 && code<=57 ){
+                number++;
+            }
+            else {
+                other++;
+            }
+
+        }
+        document.write("大写"+upper+"小写"+lower+"数字"+number+"符号"+other);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

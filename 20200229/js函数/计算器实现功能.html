@@ -1,0 +1,140 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>计算机定格</title>
+    <style>
+        #zero{
+            width: 304px;
+            height: 350px;
+            margin: auto;
+        }
+        #one{
+            width: 304px;
+            height: 50px;
+            border: solid 0px red;
+            float: left;
+            background-color: black;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        #result1{
+            width: 304px;
+            height: 50px;
+            border: solid 0px red;
+            float: left;
+            background-color: whitesmoke;
+        }
+        #result {
+            width: 280px;
+            height: 46px;
+            border: solid 1px red;
+            background-color: white;
+            margin: auto;
+        }
+        #three{
+            width: 300px;
+            height: 250px;
+            border: solid 2px;
+            float: left;
+            background-color: black;
+        }
+        #three div {
+            width: 73px;
+            height: 48px;
+            border: solid 1px ;
+            float: left;
+            background-color: aqua;
+            text-align: center;
+            line-height: 48px;
+            font-size: 24px;
+        }
+        #three div:hover{
+            background-color: chartreuse;
+            font-size: 40px;
+        }
+    </style>
+
+        <script>
+            /**
+             * 1.JS如何于界面上的元素发生关系？JS如何操作界面元素？
+             * JS的处理结果，如何能够反馈到界面原属上？
+             * 3.点击不同的按钮，要实现不同的功能，如何做到？
+             * 4.5+67*89-254等于多少？如何计算
+             */
+                    //0-9的数字输入到result元素上
+            function input(number) {
+                //利用JS实现对Result的div中元素的炒作，使其显示某个数字
+                document.getElementById("result").innerHTML += number;
+            }
+            //5个运算符输入到result元素上
+            function operate(symbol) {
+                document.getElementById("result").innerHTML += symbol;
+            }
+            //输入小数点
+            function point() {
+                document.getElementById("result").innerHTML += ".";
+            }
+            //点击=号做计算，并显示结果
+            function calc() {
+                var express = document.getElementById("result").innerHTML;
+                // window.alert(express);//在页面上弹出一个对话框，里边显示需要的内容
+                var result = eval(express);
+                // window.alert(r)
+                document.getElementById("result").innerHTML += r;
+
+
+            }
+            //回退：删除最后一个数字
+            function back() {
+
+                var express = document.getElementById("result").innerHTML;
+                var newstr = "";
+                //循环取字符串的每一位，不取最后一位
+                for (var i = 0; i < express.length - 1; i++) {
+                    newstr += express.charCodeAt(i)
+                }
+                ocument.getElementById("result").innerHTML = newstr;
+            }
+        </script>
+    </head>
+    <!DOCTYPE html>
+
+<body>
+<div id="zero">
+    <div id="one">&nbsp;&nbsp;
+        <font size="4" color="#FF0000">@</font>&nbsp;&nbsp;
+        <font size="4" color="blue">@</font>&nbsp;&nbsp;
+        <font size="4" color="yellow">@</font>
+    </div>
+
+    <div id="result1" >
+        <div id="result" ></div>
+    </div>
+    <div id="three">
+        <div onclick="input(8)">8</div>
+        <div onclick="input(7)">7</div>
+        <div onclick="input(6)">6</div>
+        <div onclick="input(5)">5</div>
+        <div onclick="input(4)">4</div>
+        <div onclick="input(3)">3</div>
+        <div onclick="input(2)">2</div>
+        <div onclick="input(1)">1</div>
+        <div onclick="input(0)">0</div>
+        <div onclick="point('.')">.</div>
+        <div onclick="operate('+')">+</div>
+        <div onclick="operate('-')">-</div>
+        <div onclick="operate('*')">*</div>
+        <div onclick="operate('/')">/</div>
+        <div onclick="operate('=')">=</div>
+        <div onclick="operate('+/-')">+/-</div>
+        <div onclick="input(AC)">AC</div>
+        <div onclick="operate('%')">%</div>
+        <div onclick="back('回退')">回退</div>
+        <div onclick="input('8')">8</div>
+    </div>
+</div>
+</body>
+</html>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#one{
+				height: 50px;
+				width: 305px;
+				margin: auto;
+				background-color: black;
+				vertical-align: middle;
+				border-top-left-radius:10px;
+				border-top-right-radius:10px;
+			}
+			#result-box{
+				height: 58px;
+				width: 305px;
+				margin: auto;
+				background-color: black;
+				border: solid px ;
+			}
+			#result{
+				height: 48px;
+				width: 288px;
+				margin: auto;
+				background-color: white;
+				line-height: 60px;
+				text-align: right;
+				margin: 5px auto
+				border: solid 1px red;
+				
+			}
+			#three{
+				height: 375px;
+				width: 300px;
+				margin: auto;
+				background-color: black;
+				border: solid 2.5px;
+				border-bottom-left-radius:10px;
+				border-bottom-right-radius:10px;
+			}
+			#inner{
+				height: 70px;
+				width: 70px;
+				margin: auto;
+				background-color: hotpink;
+				border: solid 2.5px;
+				float: left;
+				font-size: 30px;
+				font-family: weiruanyah;
+				text-align: center;
+				line-height: 70px;
+			}
+			#inner:hover{
+				background-color: aqua;
+				font-size: 45px;
+			}
+		</style>
+		<script>
+			//如何于界面发生关系
+			/**
+			 * 如何反馈到页面
+			 * 不同按钮，不同功能
+			 */
+			
+			//把数字展现在显示屏上
+			function  input(number) {
+			// 利用JS实现对result的div元素的操作，得到某个数字
+			document.getElementById("result").innerHTML+=number;
+			//通过ID的这个innerHTML属性获得一个元素，号连接起来
+			}
+			
+			
+			//把运算符输入到界面上
+			//函数，操作/运转（符号symbol）
+			function operater(symbol){
+				 document.getElementById("result").innerHTML+=symbol;
+				 //通过ID的这个innerHTML属性获得一个元素，符号连接起来
+			}
+			// function clickButton(number){
+			// 	var result=document.getElementById("result").inner;
+			// 	if(result.length<=18){
+			// 		document.getElementById("result").inner+=number;
+					
+			// 	}
+			// 	else{
+			// 		alert("本计算机只能输入18位的长度");
+			// 	}
+			// }
+		</script>
+	</head>
+	<body>
+		<div id="one">
+			<td class="bg-red"><font size="4" color="red">@</font></td>
+			<td class="bg-blue"><font size="4" color="yellow">@</font></td>
+			<td class="bg-yellow"><font size="4" color="blue">@</font></td>
+		</div>
+		<div id="result-box">
+			<div id="result">
+				
+			</div>
+		</div>
+		
+		
+		<div id="three">
+			<div id="inner">AC</div>
+			<div id="inner">+/-</div>
+			<div id="inner" onclick="operater('%')">>%</div>
+			<div id="inner" onclick="operater('/')">/</div>
+			<div id="inner" onclick="input(7)">7</div>
+			<div id="inner" onclick="input(8)">8</div>
+			<!--//鼠标单击事件-->
+			<div id="inner" onclick="input(9)">9</div>
+			<div id="inner" onclick="operater('*')">*</div>
+			<div id="inner" onclick="input(4)">4</div>
+			<div id="inner" onclick="input(5)">5</div>
+			<div id="inner" onclick="input(6)">6</div>
+			<div id="inner" onclick="operater('-')">-</div>
+			<div id="inner" onclick="input(1)">1</div>
+			<div id="inner" onclick="input(2)">2</div>
+			<div id="inner" onclick="input(3)">3</div>
+			<div id="inner" onclick="operater('+')">+</div>
+			<div id="inner" onclick="input(0)">0</div>
+			<div id="inner" onclick="del()">回退</div>
+			<div id="inner"onclick="point('.')">.</div>
+			<div id="inner" onclick="cacl()">=</div>
+
+		</div>
+		
+	</body>
+</html>

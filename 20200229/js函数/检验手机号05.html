@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>检验手机号</title>
+
+    <script>
+        /**
+         * 1、手机号11位
+         * 2、只能数字
+         *3、判断条件不正确直接rturen
+         */
+    function ChenkPhon(phone) {
+            if (phone.length != 11) {
+                return false;//终止代码
+            }
+            if (phone.charAt(0) != 1) {
+                return false;
+            }
+            var second = phone.charCodeAt(1);
+            if(second <51 || second>57){
+                return false;
+            }
+
+            for (var i=0;i<phone.length;i++){
+                var code =phone.charCodeAt(i);//获取ASCCII码
+                if (code < 48|| code >57){
+                    return false;
+                }
+            }
+
+
+
+
+            return true;
+        }
+        // document.write(ChenkPhon("13312678564")+"<br>");
+        // document.write(ChenkPhon("23312678564")+"<br>");
+        // document.write(ChenkPhon("13412678064")+"<br>");
+        // document.write(ChenkPhon("1312678564")+"<br>");
+        // document.write(ChenkPhon("133+12678564")+"<br>");
+        // document.write(ChenkPhon("16612678564")+"<br>");
+        // document.write(ChenkPhon("13312678564")+"<br>");
+
+
+        function  testCheckPhone(phonr,except) {
+            var actual =ChenkPhon(phonr);
+            if(actual ==except){
+                document.write("测试成功"+"<br>");
+            }
+            else {
+                document.write("测试失败"+"<br>");
+
+            }
+        }
+        testCheckPhone("13312678564",true);
+        testCheckPhone("15612678564",true);
+        testCheckPhone("16612678564",true);
+        testCheckPhone("133++678564",false);
+        testCheckPhone("133126728564",false);
+        testCheckPhone("1331)678564",false);
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

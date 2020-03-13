@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒序输出</title>
+    <script>
+//用户输入正整数，倒序输出
+    //等比
+        //35697 ：35697/1%10=7，，，35697/10%10=9,,,,35697/100 % 10=6
+        // var number = window.prompt("请输入正整数");
+        // var count=0;
+        // for(var divided = 1;parseInt(number/divided)>0;divided*=10){
+        //     count++;
+        //     var digit = parseInt(number/divided)%10;
+        //     document.writeln(digit);
+        // }
+        // // document.writeln("输入的个数为："+ count);
+        // document.writeln("<br/>");
+
+    //  while循环
+        //number  =number/10
+        // var num = 36987;
+        // while (num>0){
+        //     var digit1= num%10
+        //     document.writeln(digit1)
+        //     num =parseInt(num/10);
+        // }
+        // document.writeln("<br/>");
+
+
+//计算1~100之间的质数
+        //给定一个数判断是否为质数
+        for(var num3=1;num3<=200;num3++){
+            var count3 = 0;
+            for(var i=1;i<=num3;i++){
+                if(num3%i==0){
+                    count3++;
+                }
+            }
+            if(count3==2){
+                document.writeln("这是质数"+num3+"<br/>");
+            }
+        }
+
+
+
+//判断是质数
+//         for(var num4=1;num4<=200;num4++) {
+//             for ( var i=2;i<=num4;i++){
+//                 if(num4 %i==0) {
+//                     break;
+//                 }
+//             }
+//             if(i==num4){
+//                 document.writeln("质数"+num4+"</br>")
+//             }
+//         }
+
+//方案3，排除偶数，
+//         for(var num5 = 3;num5<=200;num5+=2){
+//             var count5 = 0;
+//             for(var i=2;i<=num5/2;i++){
+//                 if(num5%i==0){
+//                     count5++;
+//                 }
+//                 if(count5 ==1){
+//                     break;
+//                 }
+//             }
+//             if(count5==0){
+//                 document.writeln("质数"+num5+"</br>")
+//             }
+//         }
+
+
+//方案4 ，开根号，例如 9，开根号得到 3，   i==2不成立，i==3的时候，number%3==0，后面不用算，这不是质数
+//         for(var numbe = 3;numbe<=200;numbe+=2){
+//             var cou =0;
+//             for(var t=2 ;t<=math.sqrt(numbe);t++){
+//                 if (numbe%t==0){
+//                     cou++;
+//                 }
+//                 if(cou==1){
+//                     break;
+//                 }
+//             }
+//             if(cou == 0){
+//                 document.writeln("这是质数"+numbe+"</br>");
+//             }
+//         }
+
+ //方案五  这个数不能除3/5/711/13
+
+        // for(var number = 11;number<=99;number+=2){
+        //     if(number%3!=0 && number%7!=0 && number%5!=0 && number%11!=0 && number%13!=0){
+        //         document.writeln("这是质数"+number+"</br>");
+        //     }
+        // }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

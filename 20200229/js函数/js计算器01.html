@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+    <style type="text/css">
+        /*使用class选择器 前面加 .    ，使用id选择器前面加#*/
+        #menu{
+            width:212px;
+            height:28px;
+            /*border: solid 2px red;*/
+            margin: auto; /*水平居中，相对于父容器*/
+            background-color: dimgray;
+            /*border-radius: 10px; 四个角都变圆角*/
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        #result-box{
+            width:208px;
+            height:28px;
+            border: solid 2px dimgray;
+            margin: auto; /*水平居中，相对于父容器*/
+            background-color:dimgray;
+
+        }
+        #result {
+            width:200px;
+            height:24px;
+            border: solid 2px red;
+            margin: auto; /*水平居中，相对于父容器*/
+            background-color:white;
+            text-align: right; /*文字靠右*/
+
+        }
+        #bottom{
+            width:208px;
+            height:209px;
+            border: solid 2px dimgray;
+            /*float: left;*/
+            margin: auto; /*水平居中，相对于父容器*/
+            background-color: #0ae291;
+
+        }
+        #inner{
+            width: 50px;
+            height:40px;
+            border: solid 1px dimgray;
+            float: left;
+            text-align: center;/*文字水平居中*/
+            line-height: 40px;/*设置文字行高*/
+            font-size: 10px;/*文本大小*/
+
+        }
+        #inner:hover{
+            background-color: orangered; /*鼠标滑动显示特效*/
+            font-size: 20px;/*字体变大*/
+
+        }
+    </style>
+
+    <script>
+//如何与界面产生关系
+    //如何反馈到界面上
+    //    不同按钮，不同功能
+    //    如何计算结果
+        function  input(number) {
+        // 利用JS实现对result的div元素的操作，得到某个数字
+        document.getElementById("result").innerHTML+=number;
+        //通过ID的这个innerHTML属性获得一个元素，号连接起来
+        }
+//输入运算符到界面上
+        function operater(symbol) {
+            document.getElementById("result").innerHTML+=symbol;
+            
+        }
+//点击等号计算结果并且显示
+        function cacl() {
+            var express = document.getElementById("result").innerHTML;
+            // document.writeln(express);//展示新的啊网页，之前的网页消失
+            // window.alert(express);//展示弹窗，不消失页面
+            var r = eval(express);//内置函数，实现计算
+            document.getElementById("result").innerHTML=r;//计算器显示框里面的数值被重新定义
+        }
+
+//小数点不能输入两次
+        function point() {
+            document.getElementById("result").innerHTML+="."
+        }
+
+//回退.循环取字符串，不取最后一位
+         function del() {
+            var dell = document.getElementById("result").innerHTML;
+            var newstr = "";
+            for(var i=0;i<dell.length-1;i++){
+                newstr+=dell.charAt(i);
+                // window.alert(dell.charAt(i));
+            }
+             document.getElementById("result").innerHTML=newstr;
+            //将结果展示到界面上
+         }
+    </script>
+</head>
+<body>
+<div id="menu">&nbsp;
+    <font size="6" color="red">*</font>
+    <font size="6" color="blue">*</font>
+    <font size="6" color="#6b8e23">*</font>
+
+</div>
+<div id="result-box">
+    <div id="result">
+
+    </div>
+</div>
+
+<div id="bottom">
+    <div id="inner" >AC</div>
+    <div id="inner">+/-</div>
+    <div id="inner" onclick="operater('%')">>%</div>
+    <div id="inner" onclick="operater('/')">/</div>
+    <div id="inner" onclick="input(7)">7</div>
+    <div id="inner" onclick="input(8)">8</div>
+    <!--//鼠标单击事件-->
+    <div id="inner" onclick="input(9)">9</div>
+    <div id="inner" onclick="operater('*')">*</div>
+    <div id="inner" onclick="input(4)">4</div>
+    <div id="inner" onclick="input(5)">5</div>
+    <div id="inner" onclick="input(6)">6</div>
+    <div id="inner" onclick="operater('-')">-</div>
+    <div id="inner" onclick="input(1)">1</div>
+    <div id="inner" onclick="input(2)">2</div>
+    <div id="inner" onclick="input(3)">3</div>
+    <div id="inner" onclick="operater('+')">+</div>
+    <div id="inner" onclick="input(0)">0</div>
+    <div id="inner" onclick="del()">回退</div>
+    <div id="inner"onclick="point('.')">.</div>
+    <div id="inner" onclick="cacl()">=</div>
+
+</div>
+
+</body>
+</html>

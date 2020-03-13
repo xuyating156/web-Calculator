@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>div布局</title>
+    <style>
+        #outer{
+            width: 300px;
+            height: 300px;
+            border: solid 2px red;
+            background-color: #0ae291;
+            margin: auto;
+            /*padding: 100px; !*四周都填充100px*!*/
+            /*padding-top: 50px;子容器向下延申50PX，父容器加长50*/
+        }
+        #inner{
+            width: 150px;
+            height: 80px;
+            /*border: solid 2px #2225ff;*/
+            border-bottom: solid 5px white;/*下边白色边框*/
+            background-color: orangered;
+            margin: auto;
+            margin-top: 50px;
+            /*和父容器一起向下50PX，父容器加边框就说子容器在父容器内向下走50*/
+            line-height: 20px;/*行高*/
+            padding-top:40px;
+            text-align: center;
+            /*padding: 40px 0px;!*组合属性，上下70，左右0*!*/
+            /*padding: 70px 0px 70px 0px;!* 上 由 下 左*!*/
+        }
+        #inner2{
+            width: 150px;
+            /*height: 100px;*/
+            border: solid 2px cornflowerblue;
+            margin: auto;/*水平居中*/
+            text-align: center;/*w文字水平居中*/
+            line-height: 100px; /*和vertical-align:middle;配合使用*/
+
+
+        }
+    </style>
+</head>
+<body>
+    <!--盒模型-->
+    <div id="outer">
+        <div id="inner">
+            我1要垂直居中</br>
+            我2要垂直居中
+        </div>
+        <div id="inner2">
+            <!--/*vertical-align:middle;  图片垂直居中*/-->
+            <img src="11.png" style="width:100px; height: 80px; vertical-align:middle;" >
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>水仙花</title>
+    <script>
+        //计算水仙花数，每一位的立方和等于自己
+        //153   153 & 10 == 3，153/10==15  15%10==5  ，153/10/10，
+        //269   parseint (296/1)%10,   parseint (296/10)%10,   parseint (296/100)%10
+        //   parseint(N/10^X）%10  个位0，，十位1，，百位2，，千位3，，
+          for(var number =100;number<=999;number++){
+
+                  var a = parseInt(number/1)%10;
+                  var b = parseInt(number/10)%10;
+                  var c = parseInt(number/100)%10;
+                  if(( a*a*a +b*b*b + c*c*c) == number){
+                      document.writeln(number+"<br/>");
+              }
+          }
+
+        //第二种方法：已知 a b c 如何组成三位数
+                for (var i = 1; i <= 9; i++) {
+                    for (var j = 0; j <= 9; j++) {
+                        for (var k = 0; k <= 9; k++) {
+                            var number1 = i*100 +j*10+k;
+                            if ((i * i * i + j * j * j + k * k * k) == number1) {
+                                document.writeln(number1 + "<br/>");
+                            }
+                        }
+                    }
+                }
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
